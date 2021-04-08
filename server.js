@@ -24,7 +24,7 @@ if (port == null || port == "") {
 }
 
 app.post("/api/Whatsapp", async (req, res) => {
-  console.log("whatsapp ok", req);
+  console.log("whatsapp ok", req.body);
   const jsonFile = { reply: "שלום, אני השרת של משה. תודה שפנית אלי.." };
   res.send(jsonFile);
 });
