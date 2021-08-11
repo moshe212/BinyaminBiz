@@ -1,20 +1,24 @@
-const { exception } = require("console");
 const { GoogleSpreadsheet } = require("google-spreadsheet");
 const moment = require("moment"); // require
 
-const getDataFromSheet = async function () {
+const GetDataFromSheet = async function () {
   const creds = require("../config/CreditTransaction-d9fe1ef7e128.json");
   // Initialize the sheet - doc ID is the long id in the sheets URL
   const doc = new GoogleSpreadsheet(
     "1SU3sfh1PsiQBcB5Fg1edy5SKUfDaeQ-8C61qfj6gk3c"
   );
 
-  await doc.useServiceAccountAuth(creds);
-  await doc.loadInfo(); // loads document properties and worksheets
+  try {
+    await doc.useServiceAccountAuth(creds);
+    await doc.loadInfo(); // loads document properties and worksheets
 
-  const docTitle = doc.title;
+    const docTitle = doc.title;
 
-  return docTitle;
+    return docTitle;
+  } catch (e) {
+    throw e;
+  }
+
   //   console.log(doc.title);
   //   await doc.updateProperties({ title: "renamed doc" });
   // const promises = [];
@@ -27,4 +31,4 @@ const getDataFromSheet = async function () {
   // }
 };
 
-module.exports = { getDataFromSheet };
+module.exports = { GetDataFromSheet };

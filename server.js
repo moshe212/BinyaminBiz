@@ -70,7 +70,7 @@ cloudinary.config({
 
 app.post("/api/Whatsapp", async (req, res) => {
   console.log("whatsapp okk", req.body);
-  const docTitle = await footballFunc.getDataFromSheet();
+  const docTitle = await footballFunc.GetDataFromSheet();
   console.log(docTitle);
   const cycle = "5.2021";
   const jsonFile = {
