@@ -13,7 +13,7 @@ const GetDataFromSheet = async function () {
     await doc.loadInfo(); // loads document properties and worksheets
 
     const docTitle = doc.title;
-
+    console.log("for");
     return docTitle;
   } catch (e) {
     throw e;
