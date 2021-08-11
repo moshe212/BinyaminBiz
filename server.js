@@ -72,9 +72,12 @@ app.post("/api/Whatsapp", async (req, res) => {
   console.log("whatsapp okk", req.body);
   const docTitle = await footballFunc.getDataFromSheet();
   console.log(docTitle);
+  const cycle = "5.2021";
   const jsonFile = {
     reply:
-      "אהלן, אני הבוט של היציע: ליגת העל 2021/2 האם ברצונכם למלא את ניחושי המחזור המספר מחזור? ",
+      "? אהלן, אני הבוט של היציע: ליגת העל 2021 האם  \\n ברצונכם למלא את ניחושי המחזור " +
+      cycle +
+      " \n  כן - הקש 1 לא - הקש 2",
   };
   res.send(jsonFile);
 });
