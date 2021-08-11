@@ -1,6 +1,6 @@
 const { GetDataFromSheet } = require("./GetDataFromSheet.js");
 
-const footballFunc = { getDataFromSheet };
+const footballFunc = { GetDataFromSheet };
 
 module.exports = { footballFunc };
 // module.exports = { connectToDB };
