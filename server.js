@@ -137,8 +137,8 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname + "/Client/build/index.html"));
 });
 
-connectToDB().then(() => {
-  server.listen(port, () => {
-    console.log("Example app listening on port " + port);
-  });
+// connectToDB().then(() => {
+server.listen(port, () => {
+  console.log("Example app listening on port " + port);
+  // });
 });
