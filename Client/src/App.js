@@ -4,11 +4,13 @@ import "./App.css";
 // import "./assets/css/fonts.css";
 
 import BizDetails from "./BizDetails";
+import MainRouter from "./MainRouter";
 
 function App() {
   return (
     <div dir="rtl" className="App">
-      <BizDetails />
+      {/* <BizDetails /> */}
+      <MainRouter />
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>

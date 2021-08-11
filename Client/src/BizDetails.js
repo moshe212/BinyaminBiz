@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useHistory, useParams } from "react-router-dom";
+import Axios from "axios";
 import BizTicker from "./BizTicker";
 import "./BizDetails.css";
 
@@ -16,8 +18,21 @@ import {
 
 const BizDetails = () => {
   const [starCount, setstarCount] = useState(0);
+  const [bizDetails, setbizDetails] = useState();
+  const { id } = useParams();
+  console.log(id);
+  // console.log(starCount);
 
-  console.log(starCount);
+  useEffect(() => {
+    Axios.post("/api/biz_details", {
+      BizID: id,
+    }).then((res) => {
+      console.log(res.data);
+      setbizDetails(res.data);
+    });
+  }, []);
+
+  // console.log("bizDetails", bizDetails);
   return (
     <div className="bizDetailsRoot">
       <div className="BizDetailHeader">
@@ -28,14 +43,16 @@ const BizDetails = () => {
       </div>
       <img
         className="BizDetailsImg"
-        src="https://dkatom.co.il/storage/ZLVNBzJA2BMjwDkCRdXKbpAjMsXUjZtkqPKUYrMj.jpeg"
+        // src={bizDetails.}
+        src={bizDetails ? bizDetails.Background : ""}
+        // src="https://dkatom.co.il/storage/ZLVNBzJA2BMjwDkCRdXKbpAjMsXUjZtkqPKUYrMj.jpeg"
         alt=""
       ></img>
 
       <div className="BizDetails">
         <div className="BizDetailsGrid">
           <div className="BizName">
-            <h1>SlikApp</h1>
+            <h1>{bizDetails ? bizDetails.BizName : ""}</h1>
             <div className="BizDigitalIcon">
               <img
                 className="BizFacebookIcon"
@@ -63,7 +80,9 @@ const BizDetails = () => {
                   marginBottom: "20px",
                 }}
               />
-              <span className="ContactItem">0523587990</span>
+              <span className="ContactItem">
+                {bizDetails ? bizDetails.CellPhone : ""}
+              </span>
             </div>
             <div>
               <UserOutlined
@@ -73,7 +92,9 @@ const BizDetails = () => {
                   marginBottom: "20px",
                 }}
               />
-              <span className="ContactItem">משה</span>
+              <span className="ContactItem">
+                {bizDetails ? bizDetails.FirstName : ""}
+              </span>
             </div>
             <div>
               <WhatsAppOutlined
@@ -93,7 +114,11 @@ const BizDetails = () => {
                   marginBottom: "20px",
                 }}
               />
-              <span className="ContactItem">E-mail לבעל העסק</span>
+              <span className="ContactItem">
+                <a href={bizDetails ? "mailto:" + bizDetails.Email : ""}>
+                  E-mail לבעל העסק
+                </a>
+              </span>
             </div>
           </div>
           <div className="BizExtra">
@@ -120,7 +145,15 @@ const BizDetails = () => {
                   marginBottom: "20px",
                 }}
               />
-              <span className="BizExtraItem">חשמונאים</span>
+              <span className="BizExtraItem">
+                {bizDetails
+                  ? bizDetails.Street +
+                    " " +
+                    bizDetails.Home +
+                    " " +
+                    bizDetails.City
+                  : ""}
+              </span>
             </div>
             <div>
               <TagsOutlined
@@ -164,17 +197,14 @@ const BizDetails = () => {
             <p className="TextOnBiz_H">
               לפתח כל חלום עד למציאות.. זה מה שאנחנו עושים!
             </p>
-            <p className="TextOnBiz_P">
-              לעהרקםחעהפ קפםחגרהעכפם חפםחגפםהעכח פרחק פחפםחעה פלח פםחגפכ
-              העחרחקפםח פהעחפם חפפםח העפםחפםח פרהעכחגרקהעפ פםהחענפרחקנפ פםחנפהעם
-              רקפנהעחפםח{" "}
-            </p>
+            <p className="TextOnBiz_P">{bizDetails ? bizDetails.About : ""} </p>
           </div>
         </div>
         <div className="BizLogo">
           <img
             className="BizLogoImg"
-            src="https://dkatom.co.il/storage/Biz/Logos/3238.jpg"
+            src={bizDetails ? bizDetails.Logo : ""}
+            // src="https://dkatom.co.il/storage/Biz/Logos/3238.jpg"
             alt=""
           ></img>
         </div>

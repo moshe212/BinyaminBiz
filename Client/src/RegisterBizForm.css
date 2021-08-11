@@ -1,0 +1,47 @@
+@import "~antd/dist/antd.css";
+
+.FormRoot {
+  width: 100%;
+}
+
+.ant-form {
+  width: 65%;
+  margin: auto;
+
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; */
+}
+
+.ant-form label {
+  font-family: Rubik;
+  font-size: 16px;
+}
+
+.Header {
+  background-color: #1ecbe1;
+  height: 80px;
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+.RegBtn {
+  width: 250px;
+  border-radius: 10px;
+  margin-top: 20px;
+  position: relative;
+  /* left: 0px; */
+  /* margin: auto; */
+}
+
+@media (max-width: 575px) {
+  .ant-form-item .ant-form-item-label {
+    text-align: right;
+    padding: 0px;
+  }
+}
+
+/* .ant-col-16 {
+  max-width: 100%;
+} */
