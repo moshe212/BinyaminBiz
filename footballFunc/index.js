@@ -1,4 +1,4 @@
-const { getDataFromSheet } = require("./getDataFromSheet.js");
+const { getDataFromSheet } = require("./getDataFromSheet");
 
 const footballFunc = { getDataFromSheet };
 
