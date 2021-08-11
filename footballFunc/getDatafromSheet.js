@@ -2,8 +2,8 @@ const { exception } = require("console");
 const { GoogleSpreadsheet } = require("google-spreadsheet");
 const moment = require("moment"); // require
 
-const getBanksSheetData = async (BankNames) => {
-  const creds = require("./config/CreditTransaction-d9fe1ef7e128.json");
+const getDataFromSheet = async (BankNames) => {
+  const creds = require("../config/CreditTransaction-d9fe1ef7e128.json");
   // Initialize the sheet - doc ID is the long id in the sheets URL
   const doc = new GoogleSpreadsheet(
     "1SU3sfh1PsiQBcB5Fg1edy5SKUfDaeQ-8C61qfj6gk3c"
@@ -27,4 +27,4 @@ const getBanksSheetData = async (BankNames) => {
   // }
 };
 
-module.exports = { getBanksSheetData };
+module.exports = { getDataFromSheet };

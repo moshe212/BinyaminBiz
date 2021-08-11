@@ -37,7 +37,7 @@ if (port == null || port == "") {
 let Mongo_Path = process.env.Mongo_Path;
 
 https.get("https://coderbyte.com/api/challenges/json/json-cleaning", (resp) => {
-  console.log(resp);
+  // console.log(resp);
   for (prop in resp) {
   }
   let data = "";
@@ -69,8 +69,8 @@ cloudinary.config({
 });
 
 app.post("/api/Whatsapp", async (req, res) => {
-  console.log("whatsapp ok", req);
-  const docTitle = await footballFunc.getDatafromSheet();
+  console.log("whatsapp ok", req.body);
+  const docTitle = await footballFunc.getDataFromSheet();
   console.log(docTitle);
   const jsonFile = {
     reply:
@@ -137,8 +137,8 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname + "/Client/build/index.html"));
 });
 
-// connectToDB().then(() => {
-server.listen(port, () => {
-  console.log("Example app listening on port " + port);
-  // });
+connectToDB().then(() => {
+  server.listen(port, () => {
+    console.log("Example app listening on port " + port);
+  });
 });
