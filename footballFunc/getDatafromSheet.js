@@ -15,7 +15,7 @@ const getDataFromSheet = async (BankNames) => {
   const docTitle = doc.title;
 
   return docTitle;
-  //console.log(doc.title);
+  console.log(doc.title);
   //   await doc.updateProperties({ title: "renamed doc" });
   // const promises = [];
   // for (let i = 0; i < BankNames.length; i++) {
